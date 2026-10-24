@@ -83,8 +83,8 @@ affiche le libellé générique du type (« Compteur entier ») à la place de s
 suivante, moyenne du jour), la courbe du jour et du lendemain avec l'heure la moins
 chère et la plus chère de chaque jour marquées et un trait à l'heure actuelle, puis
 l'heure la moins chère d'aujourd'hui et de demain, la moyenne de demain et le prix
-du gaz. Tant que les prix de demain ne sont pas publiés, il indique qu'ils arrivent
-après 15 h.
+du gaz. Tant que les prix de demain ne sont pas publiés, il
+l'indique.
 
 ## Déclencheurs de scène
 
@@ -141,7 +141,7 @@ Les états ne sont publiés que lorsqu'ils changent, avec un rappel toutes les 6
   utilisés ; appuyez sur **Relever les prix maintenant** pour réessayer.
 - **« ne publie aucun prix d'électricité pour aujourd'hui »** : Frank Energie a
   répondu sans prix pour la journée, ce qui arrive lors d'un incident de
-  publication. L'intégration réessaie chaque heure.
+  publication. L'intégration réessaie toutes les 15 minutes.
 - **Aucune valeur sur l'appareil** : ajoutez d'abord l'appareil depuis l'onglet
   Découverte ; ses valeurs arrivent aussitôt.
 - **La fonctionnalité gaz manque ou reste affichée** : après avoir changé le réglage

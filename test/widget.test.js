@@ -68,7 +68,7 @@ test('in the four languages, numbers in the local format', async () => {
   }
 });
 
-test("before 15:00, tomorrow's prices are announced, not invented", async () => {
+test("before publication, tomorrow's prices are announced, not invented", async () => {
   const world = await createWorld({
     answers: { [TOMORROW]: undefined },
     config: { gas: false, price_kind: 'market', include_vat: false },
@@ -81,7 +81,7 @@ test("before 15:00, tomorrow's prices are announced, not invented", async () => 
     byType(c, 'status')[0].items.map((i) => [i.label, i.value]),
     [
       ['Cheapest today', '13:00 · 0.004 €/kWh'],
-      ['Tomorrow', 'After 15:00'],
+      ['Tomorrow', 'Not published yet'],
     ],
   );
   assert.equal(byType(c, 'text')[0].text, 'Market price (EPEX day-ahead), VAT excluded');

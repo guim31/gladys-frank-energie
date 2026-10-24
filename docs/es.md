@@ -81,8 +81,8 @@ la etiqueta genérica del tipo («Contador») en lugar de su nombre.
 **Precios de la luz** muestra el tipo de precio, tres mosaicos (ahora, próxima hora,
 media de hoy), el gráfico de hoy y de mañana con la hora más barata y la más cara de
 cada día marcadas y una línea en la hora actual, y después la hora más barata de hoy
-y de mañana, la media de mañana y el precio del gas. Mientras no se publiquen los
-precios de mañana, indica que llegan después de las 15:00.
+y de mañana, la media de mañana y el precio del gas. Mientras no se publiquen los precios de mañana,
+lo indica.
 
 ## Disparadores de escena
 
@@ -137,8 +137,7 @@ Los estados solo se publican cuando cambian, con un recordatorio cada 6 horas.
   no tiene acceso a internet o Frank Energie tiene una incidencia. Se siguen usando los
   últimos precios conocidos; pulse **Consultar los precios ahora** para reintentar.
 - **«no publica ningún precio de la electricidad para hoy»**: Frank Energie
-  respondió sin precios para el día, lo que ocurre en una incidencia de publicación. La
-  integración lo vuelve a intentar cada hora.
+  respondió sin precios para el día, lo que ocurre en una incidencia de publicación. La integración lo vuelve a intentar cada 15 minutos.
 - **Ningún valor en el dispositivo**: añada primero el dispositivo desde la pestaña
   Descubrir; sus valores llegan en el acto.
 - **Falta la función del gas o sigue apareciendo**: tras cambiar el ajuste del gas,

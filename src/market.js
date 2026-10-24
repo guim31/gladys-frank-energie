@@ -8,6 +8,7 @@
 //   - every 15 minutes from 13:00 (Amsterdam) while tomorrow's prices are
 //     missing: Frank Energie publishes them between 13:00 and 15:00, and the
 //     scenes and the widget want them soon after;
+//   - every 15 minutes too while today's prices are missing;
 //   - after a failure, again after 5, 10, 20, 40 then 60 minutes.
 // The data of the last successful refresh stays in use while a refresh
 // fails: prices are known a day ahead, an hour without the API changes
@@ -51,6 +52,11 @@ export function createMarket({ fetch = globalThis.fetch, now = () => Date.now() 
       return 'hourly refresh';
     }
     const today = marketDay(new Date(at));
+    // Tomorrow's prices published after midnight (a late auction, an API
+    // down in the evening): the new day must not wait an hour for them.
+    if (!hasDay(data.electricity, today) && at - lastAttemptAt >= TOMORROW_RETRY_MS) {
+      return "waiting for today's prices";
+    }
     if (
       !hasDay(data.electricity, addDays(today)) &&
       marketHour(new Date(at)) >= TOMORROW_FROM_HOUR &&

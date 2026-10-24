@@ -103,6 +103,22 @@ test('a failure keeps the known prices and retries after 5, 10, 20 minutes', asy
   assert.equal(world.gladys.fake.connectionStatuses.length, 3);
 });
 
+test('a new day without its prices asks again every 15 minutes, not hourly', async () => {
+  // 23:50: tomorrow not published yet, and it stays so past midnight.
+  const world = await createWorld({
+    at: '2026-10-24T21:50:00Z',
+    answers: { [TOMORROW]: undefined },
+  });
+  const tomorrow = () => world.api.count(TOMORROW);
+  await runFor(world, 11); // 00:01: the 25th has begun without a price
+  assert.equal(last(world.gladys, FEATURE.PRICE_NOW), 0.14484, 'the last hour of the 24th');
+  world.api.answers[TOMORROW] = FIXTURES.tomorrow; // published at last
+  await runFor(world, 14); // 00:15
+  assert.ok(tomorrow() >= 2);
+  assert.equal(last(world.gladys, FEATURE.PRICE_NOW), 0.13632);
+  assert.deepEqual(world.gladys.fake.connectionStatus, { connected: true });
+});
+
 test('a day without electricity prices says so in the Configuration screen', async () => {
   const world = await createWorld({ at: '2026-10-27T10:00:00Z' });
   assert.equal(world.gladys.fake.connectionStatus.connected, false);

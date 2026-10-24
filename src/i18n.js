@@ -95,10 +95,10 @@ export const TEXT = {
     es: 'Media de mañana',
   },
   tomorrowPending: {
-    en: 'After 15:00',
-    fr: 'Après 15:00',
-    de: 'Ab 15:00',
-    es: 'Después de las 15:00',
+    en: 'Not published yet',
+    fr: 'Pas encore publié',
+    de: 'Noch nicht bekannt',
+    es: 'Aún no publicado',
   },
   gasToday: { en: 'Gas today', fr: "Gaz aujourd'hui", de: 'Gas heute', es: 'Gas hoy' },
   allInVat: {

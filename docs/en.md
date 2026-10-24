@@ -80,8 +80,8 @@ label of the kind ("Counter (integer)") instead of its name.
 **Electricity prices** shows the price kind, three tiles (now, next hour, today's
 average), the chart of today and tomorrow with the cheapest and the most expensive
 hour of each day marked and a line at the current time, then the cheapest hour of
-today and tomorrow, tomorrow's average and the gas price. Until tomorrow's prices
-are published, it says that they come after 15:00.
+today and tomorrow, tomorrow's average and the gas price. Until tomorrow's prices are published, it says
+that they are not published yet.
 
 ## Scene triggers
 
@@ -135,8 +135,8 @@ The states are published only when they change, plus a reminder every 6 hours.
   internet access, or Frank Energie is down. The last known prices stay in use; press
   **Refresh the prices now** to try again.
 - **"publishes no electricity price for today"**: Frank Energie answered with no
-  price for the day: it happens on a publication incident. The integration tries
-  again every hour.
+  price for the day: it happens on a publication incident. The integration tries again
+  every 15 minutes.
 - **No value on the device**: add the device from the Discovery tab first; its values
   arrive at once.
 - **The gas feature is missing or still there**: after changing the gas setting, open

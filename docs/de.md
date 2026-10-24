@@ -81,7 +81,8 @@ Namens die allgemeine Bezeichnung des Typs („Zähler“).
 Durchschnitt heute), das Diagramm von heute und morgen mit der günstigsten und der
 teuersten Stunde jedes Tages und einer Linie zur aktuellen Uhrzeit, danach die
 günstigste Stunde von heute und morgen, den Durchschnitt von morgen und den Gaspreis.
-Solange die Preise für morgen fehlen, steht dort, dass sie ab 15 Uhr kommen.
+Solange die Preise für morgen fehlen, steht dort, dass sie noch nicht
+veröffentlicht sind.
 
 ## Szenen-Auslöser
 
@@ -137,8 +138,7 @@ Die Zustände werden nur bei einer Änderung veröffentlicht, dazu eine Erinneru
   Internetzugang, oder Frank Energie ist gestört. Die zuletzt bekannten Preise bleiben in
   Gebrauch; drücke **Preise jetzt abrufen**, um es erneut zu versuchen.
 - **„veröffentlicht aber keinen Strompreis für heute“**: Frank Energie hat ohne
-  Preis für den Tag geantwortet, das passiert bei einer Veröffentlichungsstörung. Die
-  Integration versucht es jede Stunde erneut.
+  Preis für den Tag geantwortet, das passiert bei einer Veröffentlichungsstörung. Die Integration versucht es alle 15 Minuten erneut.
 - **Kein Wert am Gerät**: Füge das Gerät zuerst über den Tab „Entdecken“ hinzu;
   seine Werte kommen sofort.
 - **Die Gas-Funktion fehlt oder bleibt**: Öffne nach einer Änderung der Gas-Einstellung
