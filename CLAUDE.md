@@ -31,16 +31,25 @@ pushing.
 ## Architecture
 
 ```
-index.js                          SDK wiring only: handlers registered before connect()
-src/devices/index.js              registry of the device blueprints + dispatch helpers
-src/devices/<type>.js             one device type per file (buildDevice, onPoll, onSetValue...)
-src/scenes.js                     scene action handlers (manifest `scene_actions`)
-src/widgets.js                    dashboard widget handlers (manifest `widgets`)
+index.js                          SDK wiring only: src/app.js registers the handlers before connect()
+src/app.js                        refresh cycle (own minute timer, onPoll fallback), states, scene events,
+                                  "refresh" action, widget, config and connection lifecycle
+src/frankenergie.js               client of the public GraphQL API (marketPrices, four price streams)
+src/market.js                     known prices, refresh policy (hourly, 15 min from 13:00, backoff), snapshot
+src/prices.js                     pure computations: current/next slot, day summary, rank, cheapest window
+src/device.js                     the one device (external id on the market zone "nl") and its states
+src/triggers.js                   scene events fired when an hour begins (manifest `scene_triggers`)
+src/widget.js                     "prices" dashboard widget (manifest `widgets`)
+src/ledger.js                     hours whose scene events are out, kept in /data/scene-events.json
+src/time.js                       Europe/Amsterdam market clock
+src/i18n.js                       feature names and every user-facing text, en/fr/de/es
 src/config.js                     DEFAULT_CONFIG (mirrors the manifest defaults) + normalization
-src/weather.js                    example driver (Open-Meteo)
-gladys-assistant-integration.json manifest: name, config_schema, actions, image...
-docs/en.md, docs/fr.md            user documentation, re-hosted by Gladys (mandatory)
-test/                             node --test, against the SDK's fake Gladys (integration-sdk/testing)
+src/issues.js                     a repeated failure logged once, its recovery once
+scripts/probe.mjs                 reads the real prices of today and tomorrow (network)
+gladys-assistant-integration.json manifest: name, config_schema, actions, triggers, widget...
+docs/{en,fr,de,es}.md             user documentation, same sections (test/i18n.test.js)
+test/                             node --test, against the SDK's fake Gladys and a fake API
+test/fixtures/frank-energie/      real API answers (24, 25 October 2026, unpublished day, bad date)
 .github/scripts/release.mjs       release helpers (manifest bump, changelog), tested in test/
 ```
 
@@ -70,10 +79,41 @@ test/                             node --test, against the SDK's fake Gladys (in
   `type: "provider"`: 5.1.0). `test/manifest.test.js` ties the manifest to the
   code (defaults, action, scene and widget handlers): change both sides
   together.
-- **User-facing text** is bilingual (English and French): action messages,
-  manifest texts, and `docs/en.md` / `docs/fr.md`, kept in sync.
+- **User-facing text** exists in English, French, German and Spanish: action
+  messages, manifest texts, feature names, widget, and `docs/en.md`, `fr.md`,
+  `de.md`, `es.md`, kept in sync (see « Langues » below).
 - **Style.** Prettier formats, ESLint catches mistakes. Comments explain why,
   in English. Tests never touch the network.
+
+# Frank Energie : API et pièges propres à cette intégration
+
+- Reprise de `gladys-energyzero` (même appareil, mêmes clés de fonctionnalités, de déclencheurs, de widget et
+  de configuration) : seul le client d'API change. Garder les deux alignés.
+- **API** : `POST https://graphql.frankenergie.nl`, requête publique `marketPrices(date: "YYYY-MM-DD")` →
+  `electricityPrices` / `gasPrices`, chaque entrée `{ from, till, marketPrice, marketPriceTax,
+sourcingMarkupPrice, energyTaxPrice, perUnit, allInPrice }`, nombres en €/kWh ou €/m³. Sans compte ni clé ;
+  pas de quota publié, rester à environ deux requêtes par heure. La connexion au compte (prix personnalisés,
+  consommation) est hors périmètre de la v1.
+- Une requête = **un jour de marché** (Amsterdam) : 23, 24 ou 25 heures (25 le 25/10/2026, vérifié). On
+  demande aujourd'hui et demain.
+- **Jour non publié** : pas de liste vide mais une erreur GraphQL `No marketprices found for segment
+ELECTRICITY for <jour>` (HTTP 200, `data: null`), **pour le gaz aussi** : sélectionner seulement
+  `gasPrices` ne l'évite pas. Traité comme « rien de publié » ; toute autre erreur GraphQL est un échec.
+- `marketPrice` est hors TVA, `marketPriceTax` la TVA dessus ; `sourcingMarkupPrice` et `energyTaxPrice`
+  sont **TVA comprise**, et `allInPrice` est leur somme (vérifié au centime près). Le tout compris hors TVA
+  n'existe pas dans l'API : il est calculé avec 21 % (`VAT_RATE`). Sommes arrondies à 5 décimales.
+- Le **gaz** est publié heure par heure, au prix de la journée gazière **de 6 h à 6 h** (bascule à 6 h,
+  vérifiée sur les fixtures).
+- `resolution: PT15M` donne les quarts d'heure (le marché est au quart d'heure depuis le 1/10/2025) ; sans
+  argument, l'API rend des heures (moyenne des quarts). La v1 reste à l'heure, comme EnergyZero : passer au
+  quart d'heure changerait le rang (jusqu'à 100) et le sens des déclencheurs.
+- Prix du lendemain publiés **entre 13 h et 15 h** : relève toutes les 15 min à partir de 13 h tant qu'ils
+  manquent.
+- Pas d'unité €/kWh dans Gladys : `currency/decimal` en `euro`, l'unité est dans le nom.
+- Déclencheurs : les filtres de scène ne font qu'égalité/appartenance. Pour « les N heures les moins chères »,
+  le champ `hours` est un `select` **obligatoire** et l'intégration envoie un événement par N concerné. Pas
+  d'événement pour une heure commencée depuis plus de 10 min ; `/data/scene-events.json` évite le double
+  envoi après un redémarrage.
 
 ---
 

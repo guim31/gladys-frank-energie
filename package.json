@@ -1,8 +1,8 @@
 {
-  "name": "gladys-integration-template-js",
+  "name": "gladys-frank-energie",
   "version": "1.0.0",
   "private": true,
-  "description": "Official starter template to build an external integration for Gladys Assistant with the JavaScript SDK.",
+  "description": "Gladys Assistant integration: dynamic electricity and gas prices of Frank Energie (Netherlands).",
   "type": "module",
   "main": "index.js",
   "scripts": {
