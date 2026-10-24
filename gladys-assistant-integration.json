@@ -1,177 +1,509 @@
 {
   "manifest_version": 1,
   "type": "device",
-  "name": "Demo Devices Template",
+  "name": "Frank Energie",
   "description": {
-    "en": "Starter template showing sensors, a switch, a dimmable light and a smart plug.",
-    "fr": "Template de démarrage : capteurs, interrupteur, lampe variable et prise connectée."
+    "en": "Dynamic electricity and gas prices of Frank Energie (Netherlands), today and tomorrow.",
+    "fr": "Prix dynamiques de l'électricité et du gaz de Frank Energie (Pays-Bas), aujourd'hui et demain.",
+    "de": "Dynamische Strom- und Gaspreise von Frank Energie (Niederlande), für heute und morgen.",
+    "es": "Precios dinámicos de electricidad y gas de Frank Energie (Países Bajos), hoy y mañana."
   },
   "version": "1.0.0",
-  "docker_image": "ghcr.io/gladysassistant/integration-template-js:1.0.0",
+  "docker_image": "ghcr.io/guim31/gladys-frank-energie:1.0.0",
   "gladys_version": ">=5.1.0",
-  "cover_image": "https://raw.githubusercontent.com/GladysAssistant/integration-template-js/master/cover.png",
-  "categories": ["lighting", "security", "environment"],
-  "transports": ["local", "cloud"],
+  "cover_image": "https://raw.githubusercontent.com/guim31/gladys-frank-energie/main/cover.png",
+  "categories": ["energy"],
+  "transports": ["cloud"],
   "config_schema": [
     {
       "key": "intro",
       "type": "section",
-      "label": { "en": "Getting started", "fr": "Pour commencer" },
+      "label": {
+        "en": "Dutch energy prices",
+        "fr": "Prix de l'énergie aux Pays-Bas",
+        "de": "Energiepreise in den Niederlanden",
+        "es": "Precios de la energía en los Países Bajos"
+      },
       "description": {
-        "en": "The demo weather station reads real data from the free Open-Meteo API: pick the coordinates to observe. No account, no API key.",
-        "fr": "La station météo de démonstration lit de vraies données via l'API gratuite Open-Meteo : choisissez les coordonnées à observer. Pas de compte, pas de clé d'API."
+        "en": "Frank Energie publishes the hourly electricity prices of the Dutch day-ahead market and its gas prices, readable without an account. Tomorrow's prices arrive between 13:00 and 15:00. Add the Frank Energie device from the Discovery tab, and the price widget from the dashboard. Your own account (personal prices, consumption) is not used. Not affiliated with Frank Energie.",
+        "fr": "Frank Energie publie les prix horaires de l'électricité du marché day-ahead néerlandais et ses prix du gaz, lisibles sans compte. Les prix du lendemain arrivent entre 13 h et 15 h. Ajoutez l'appareil Frank Energie depuis l'onglet Découverte, et le widget des prix depuis le tableau de bord. Votre compte client (prix personnalisés, consommation) n'est pas utilisé. Sans lien avec Frank Energie.",
+        "de": "Frank Energie veröffentlicht die stündlichen Strompreise des niederländischen Day-Ahead-Markts und seine Gaspreise, lesbar ohne Konto. Die Preise für morgen kommen zwischen 13 und 15 Uhr. Füge das Gerät Frank Energie über den Tab „Entdecken“ hinzu und das Preis-Widget über das Dashboard. Dein Kundenkonto (persönliche Preise, Verbrauch) wird nicht verwendet. Nicht mit Frank Energie verbunden.",
+        "es": "Frank Energie publica los precios horarios de la electricidad del mercado diario neerlandés y sus precios del gas, legibles sin cuenta. Los precios de mañana llegan entre las 13:00 y las 15:00. Añada el dispositivo Frank Energie desde la pestaña Descubrir y el widget de precios desde el panel. Su cuenta de cliente (precios personalizados, consumo) no se usa. Sin relación con Frank Energie."
       },
       "links": [
         {
-          "url": "https://open-meteo.com/en/docs",
-          "label": { "en": "Open-Meteo documentation", "fr": "Documentation Open-Meteo" }
+          "url": "https://github.com/guim31/gladys-frank-energie/blob/main/docs/en.md",
+          "label": {
+            "en": "Documentation",
+            "fr": "Documentation",
+            "de": "Dokumentation",
+            "es": "Documentación"
+          }
+        },
+        {
+          "url": "https://www.frankenergie.nl",
+          "label": {
+            "en": "Frank Energie prices",
+            "fr": "Prix Frank Energie",
+            "de": "Frank-Energie-Preise",
+            "es": "Precios de Frank Energie"
+          }
         }
       ]
     },
     {
-      "key": "latitude",
-      "type": "number",
-      "label": { "en": "Latitude", "fr": "Latitude" },
-      "description": {
-        "en": "Latitude used for the demo weather sensor.",
-        "fr": "Latitude utilisée par le capteur météo de démonstration."
-      },
-      "placeholder": { "en": "e.g. 48.8566", "fr": "ex. 48.8566" },
-      "required": true,
-      "default": 48.8566,
-      "min": -90,
-      "max": 90
-    },
-    {
-      "key": "longitude",
-      "type": "number",
-      "label": { "en": "Longitude", "fr": "Longitude" },
-      "description": {
-        "en": "Longitude used for the demo weather sensor.",
-        "fr": "Longitude utilisée par le capteur météo de démonstration."
-      },
-      "placeholder": { "en": "e.g. 2.3522", "fr": "ex. 2.3522" },
-      "required": true,
-      "default": 2.3522,
-      "min": -180,
-      "max": 180
-    },
-    {
-      "key": "unit",
+      "key": "price_kind",
       "type": "select",
-      "label": { "en": "Temperature unit", "fr": "Unité de température" },
+      "label": {
+        "en": "Electricity price",
+        "fr": "Prix de l'électricité",
+        "de": "Strompreis",
+        "es": "Precio de la electricidad"
+      },
+      "description": {
+        "en": "All-in: what a Frank Energie customer pays per unit (market price, purchasing markup and energy tax). Market: the EPEX day-ahead price of the Dutch zone alone.",
+        "fr": "Tout compris : ce que paie un client Frank Energie par unité (prix du marché, frais d'achat et taxe sur l'énergie). Marché : le prix day-ahead EPEX de la zone néerlandaise seul.",
+        "de": "Endpreis: was ein Frank-Energie-Kunde pro Einheit zahlt (Börsenpreis, Einkaufsaufschlag und Energiesteuer). Börse: nur der EPEX-Day-Ahead-Preis der niederländischen Zone.",
+        "es": "Precio final: lo que paga un cliente de Frank Energie por unidad (precio de mercado, recargo de compra e impuesto sobre la energía). Mercado: solo el precio day-ahead de EPEX de la zona neerlandesa."
+      },
       "required": false,
-      "default": "celsius",
+      "default": "all_in",
       "options": [
-        { "value": "celsius", "label": { "en": "Celsius", "fr": "Celsius" } },
-        { "value": "fahrenheit", "label": { "en": "Fahrenheit", "fr": "Fahrenheit" } }
+        {
+          "value": "all_in",
+          "label": {
+            "en": "All-in consumer price",
+            "fr": "Prix tout compris",
+            "de": "Endpreis",
+            "es": "Precio final"
+          }
+        },
+        {
+          "value": "market",
+          "label": {
+            "en": "Market price (EPEX day-ahead)",
+            "fr": "Prix du marché (EPEX day-ahead)",
+            "de": "Börsenpreis (EPEX Day-Ahead)",
+            "es": "Precio de mercado (EPEX day-ahead)"
+          }
+        }
       ]
     },
     {
-      "key": "poll_frequency",
-      "type": "number",
-      "label": { "en": "Refresh interval (s)", "fr": "Intervalle de rafraîchissement (s)" },
+      "key": "include_vat",
+      "type": "boolean",
+      "label": {
+        "en": "Include VAT",
+        "fr": "Inclure la TVA",
+        "de": "MwSt. einbeziehen",
+        "es": "Incluir el IVA"
+      },
       "description": {
-        "en": "How often sensors are polled, in seconds (one minute minimum).",
-        "fr": "Fréquence d'interrogation des capteurs, en secondes (une minute minimum)."
+        "en": "Prices with the Dutch VAT (21 %).",
+        "fr": "Prix avec la TVA néerlandaise (21 %).",
+        "de": "Preise mit der niederländischen MwSt. (21 %).",
+        "es": "Precios con el IVA neerlandés (21 %)."
       },
       "required": false,
-      "default": 300,
-      "min": 60,
-      "max": 3600
+      "default": true
+    },
+    {
+      "key": "gas",
+      "type": "boolean",
+      "label": {
+        "en": "Gas price",
+        "fr": "Prix du gaz",
+        "de": "Gaspreis",
+        "es": "Precio del gas"
+      },
+      "description": {
+        "en": "Also read the gas price of the day (€/m³, from 06:00 to 06:00). Changing it adds or removes a feature: update the device in the Discovery tab.",
+        "fr": "Lire aussi le prix du gaz du jour (€/m³, de 6 h à 6 h). Le changer ajoute ou retire une fonctionnalité : mettez à jour l'appareil dans l'onglet Découverte.",
+        "de": "Auch den Gaspreis des Tages lesen (€/m³, von 6 bis 6 Uhr). Eine Änderung fügt eine Funktion hinzu oder entfernt sie: Aktualisiere das Gerät im Tab „Entdecken“.",
+        "es": "Leer también el precio del gas del día (€/m³, de 06:00 a 06:00). Cambiarlo añade o quita una función: actualice el dispositivo en la pestaña Descubrir."
+      },
+      "required": false,
+      "default": true
+    },
+    {
+      "key": "language",
+      "type": "select",
+      "label": {
+        "en": "Language of the feature names",
+        "fr": "Langue des noms de fonctionnalités",
+        "de": "Sprache der Funktionsnamen",
+        "es": "Idioma de los nombres de las funciones"
+      },
+      "description": {
+        "en": "Used when the device is added to Gladys: the names do not change afterwards.",
+        "fr": "Utilisée quand l'appareil est ajouté à Gladys : les noms ne changent plus ensuite.",
+        "de": "Wird beim Hinzufügen des Geräts zu Gladys verwendet: Die Namen ändern sich danach nicht mehr.",
+        "es": "Se usa cuando el dispositivo se añade a Gladys: los nombres ya no cambian después."
+      },
+      "required": false,
+      "default": "fr",
+      "options": [
+        {
+          "value": "en",
+          "label": {
+            "en": "English",
+            "fr": "Anglais",
+            "de": "Englisch",
+            "es": "Inglés"
+          }
+        },
+        {
+          "value": "fr",
+          "label": {
+            "en": "French",
+            "fr": "Français",
+            "de": "Französisch",
+            "es": "Francés"
+          }
+        },
+        {
+          "value": "de",
+          "label": {
+            "en": "German",
+            "fr": "Allemand",
+            "de": "Deutsch",
+            "es": "Alemán"
+          }
+        },
+        {
+          "value": "es",
+          "label": {
+            "en": "Spanish",
+            "fr": "Espagnol",
+            "de": "Spanisch",
+            "es": "Español"
+          }
+        }
+      ]
     }
   ],
   "actions": [
     {
-      "key": "test_weather",
-      "label": { "en": "Test the weather provider", "fr": "Tester le fournisseur météo" },
-      "timeout_seconds": 30
-    },
-    {
-      "key": "identify",
-      "label": { "en": "Identify a device", "fr": "Identifier un appareil" },
-      "fields": [
-        {
-          "key": "device",
-          "type": "select",
-          "source": "devices",
-          "label": { "en": "Device", "fr": "Appareil" },
-          "required": true
-        }
-      ]
+      "key": "refresh",
+      "label": {
+        "en": "Refresh the prices now",
+        "fr": "Relever les prix maintenant",
+        "de": "Preise jetzt abrufen",
+        "es": "Consultar los precios ahora"
+      },
+      "description": {
+        "en": "Reads Frank Energie now and shows what it publishes for today and tomorrow.",
+        "fr": "Interroge Frank Energie maintenant et affiche ce qu'il publie pour aujourd'hui et demain.",
+        "de": "Fragt Frank Energie jetzt ab und zeigt, was für heute und morgen veröffentlicht ist.",
+        "es": "Consulta Frank Energie ahora y muestra lo que publica para hoy y mañana."
+      },
+      "timeout_seconds": 40
     }
   ],
   "scene_triggers": [
     {
-      "key": "motion_detected",
-      "label": { "en": "Motion detected", "fr": "Mouvement détecté" },
+      "key": "cheapest_window_started",
+      "label": {
+        "en": "Cheapest hours of the day begin",
+        "fr": "Les heures les moins chères du jour commencent",
+        "de": "Die günstigsten Stunden des Tages beginnen",
+        "es": "Empiezan las horas más baratas del día"
+      },
       "description": {
-        "en": "A demo motion sensor saw a person or an animal move.",
-        "fr": "Un détecteur de démonstration a vu bouger une personne ou un animal."
+        "en": "Start of the cheapest run of consecutive hours of the day (electricity): to start an appliance once.",
+        "fr": "Début de la plage d'heures consécutives la moins chère du jour (électricité) : pour lancer un appareil une fois.",
+        "de": "Beginn des günstigsten Blocks aufeinanderfolgender Stunden des Tages (Strom): um ein Gerät einmal zu starten.",
+        "es": "Inicio del tramo de horas consecutivas más barato del día (electricidad): para poner en marcha un aparato una vez."
       },
       "fields": [
         {
-          "key": "device",
+          "key": "hours",
           "type": "select",
-          "source": "devices",
-          "label": { "en": "Sensor", "fr": "Détecteur" }
-        },
-        {
-          "key": "target",
-          "type": "multi_select",
-          "label": { "en": "What moved", "fr": "Ce qui a bougé" },
+          "label": {
+            "en": "Length of the window",
+            "fr": "Durée de la plage",
+            "de": "Länge des Blocks",
+            "es": "Duración del tramo"
+          },
+          "description": {
+            "en": "1 hour is the cheapest hour of the day.",
+            "fr": "1 heure, c'est l'heure la moins chère du jour.",
+            "de": "1 Stunde ist die günstigste Stunde des Tages.",
+            "es": "1 hora es la hora más barata del día."
+          },
+          "required": true,
+          "default": "1",
           "options": [
-            { "value": "person", "label": { "en": "Person", "fr": "Personne" } },
-            { "value": "animal", "label": { "en": "Animal", "fr": "Animal" } }
+            {
+              "value": "1",
+              "label": {
+                "en": "1 hour",
+                "fr": "1 heure",
+                "de": "1 Stunde",
+                "es": "1 hora"
+              }
+            },
+            {
+              "value": "2",
+              "label": {
+                "en": "2 hours",
+                "fr": "2 heures",
+                "de": "2 Stunden",
+                "es": "2 horas"
+              }
+            },
+            {
+              "value": "3",
+              "label": {
+                "en": "3 hours",
+                "fr": "3 heures",
+                "de": "3 Stunden",
+                "es": "3 horas"
+              }
+            },
+            {
+              "value": "4",
+              "label": {
+                "en": "4 hours",
+                "fr": "4 heures",
+                "de": "4 Stunden",
+                "es": "4 horas"
+              }
+            },
+            {
+              "value": "5",
+              "label": {
+                "en": "5 hours",
+                "fr": "5 heures",
+                "de": "5 Stunden",
+                "es": "5 horas"
+              }
+            },
+            {
+              "value": "6",
+              "label": {
+                "en": "6 hours",
+                "fr": "6 heures",
+                "de": "6 Stunden",
+                "es": "6 horas"
+              }
+            },
+            {
+              "value": "8",
+              "label": {
+                "en": "8 hours",
+                "fr": "8 heures",
+                "de": "8 Stunden",
+                "es": "8 horas"
+              }
+            }
           ]
         }
       ],
       "variables": [
         {
-          "key": "target",
+          "key": "average_price",
+          "type": "number",
+          "label": {
+            "en": "Average price (€/kWh)",
+            "fr": "Prix moyen (€/kWh)",
+            "de": "Durchschnittspreis (€/kWh)",
+            "es": "Precio medio (€/kWh)"
+          }
+        },
+        {
+          "key": "start_time",
           "type": "string",
-          "label": { "en": "What moved", "fr": "Ce qui a bougé" }
+          "label": {
+            "en": "Start (HH:MM)",
+            "fr": "Début (HH:MM)",
+            "de": "Beginn (HH:MM)",
+            "es": "Inicio (HH:MM)"
+          }
+        },
+        {
+          "key": "end_time",
+          "type": "string",
+          "label": {
+            "en": "End (HH:MM)",
+            "fr": "Fin (HH:MM)",
+            "de": "Ende (HH:MM)",
+            "es": "Fin (HH:MM)"
+          }
         }
       ]
-    }
-  ],
-  "scene_actions": [
+    },
     {
-      "key": "identify_device",
-      "label": { "en": "Identify a device", "fr": "Identifier un appareil" },
-      "description": {
-        "en": "Make a device signal itself (the demo light blinks).",
-        "fr": "Fait se signaler un appareil (la lampe de démonstration clignote)."
+      "key": "cheap_hour_started",
+      "label": {
+        "en": "One of the cheapest hours begins",
+        "fr": "Une des heures les moins chères commence",
+        "de": "Eine der günstigsten Stunden beginnt",
+        "es": "Empieza una de las horas más baratas"
       },
-      "timeout_seconds": 15,
+      "description": {
+        "en": "Start of each of the N cheapest hours of the day, consecutive or not (electricity): for a boiler, a charger.",
+        "fr": "Début de chacune des N heures les moins chères du jour, consécutives ou non (électricité) : pour un ballon, une borne.",
+        "de": "Beginn jeder der N günstigsten Stunden des Tages, ob am Stück oder nicht (Strom): für einen Boiler, eine Wallbox.",
+        "es": "Inicio de cada una de las N horas más baratas del día, consecutivas o no (electricidad): para un termo, un cargador."
+      },
       "fields": [
         {
-          "key": "device",
+          "key": "hours",
           "type": "select",
-          "source": "devices",
-          "label": { "en": "Device", "fr": "Appareil" },
-          "required": true
+          "label": {
+            "en": "Among the cheapest",
+            "fr": "Parmi les moins chères",
+            "de": "Unter den günstigsten",
+            "es": "Entre las más baratas"
+          },
+          "required": true,
+          "default": "4",
+          "options": [
+            {
+              "value": "1",
+              "label": {
+                "en": "1 cheapest hour",
+                "fr": "1 heure la moins chère",
+                "de": "1 günstigste Stunde",
+                "es": "1 hora más barata"
+              }
+            },
+            {
+              "value": "2",
+              "label": {
+                "en": "2 cheapest hours",
+                "fr": "2 heures les moins chères",
+                "de": "2 günstigste Stunden",
+                "es": "2 horas más baratas"
+              }
+            },
+            {
+              "value": "3",
+              "label": {
+                "en": "3 cheapest hours",
+                "fr": "3 heures les moins chères",
+                "de": "3 günstigste Stunden",
+                "es": "3 horas más baratas"
+              }
+            },
+            {
+              "value": "4",
+              "label": {
+                "en": "4 cheapest hours",
+                "fr": "4 heures les moins chères",
+                "de": "4 günstigste Stunden",
+                "es": "4 horas más baratas"
+              }
+            },
+            {
+              "value": "5",
+              "label": {
+                "en": "5 cheapest hours",
+                "fr": "5 heures les moins chères",
+                "de": "5 günstigste Stunden",
+                "es": "5 horas más baratas"
+              }
+            },
+            {
+              "value": "6",
+              "label": {
+                "en": "6 cheapest hours",
+                "fr": "6 heures les moins chères",
+                "de": "6 günstigste Stunden",
+                "es": "6 horas más baratas"
+              }
+            },
+            {
+              "value": "8",
+              "label": {
+                "en": "8 cheapest hours",
+                "fr": "8 heures les moins chères",
+                "de": "8 günstigste Stunden",
+                "es": "8 horas más baratas"
+              }
+            },
+            {
+              "value": "10",
+              "label": {
+                "en": "10 cheapest hours",
+                "fr": "10 heures les moins chères",
+                "de": "10 günstigste Stunden",
+                "es": "10 horas más baratas"
+              }
+            },
+            {
+              "value": "12",
+              "label": {
+                "en": "12 cheapest hours",
+                "fr": "12 heures les moins chères",
+                "de": "12 günstigste Stunden",
+                "es": "12 horas más baratas"
+              }
+            }
+          ]
         }
       ],
-      "outputs": [
+      "variables": [
         {
-          "key": "signalled",
-          "type": "boolean",
-          "label": { "en": "Device signalled", "fr": "Appareil signalé" }
+          "key": "price",
+          "type": "number",
+          "label": {
+            "en": "Price of the hour (€/kWh)",
+            "fr": "Prix de l'heure (€/kWh)",
+            "de": "Preis der Stunde (€/kWh)",
+            "es": "Precio de la hora (€/kWh)"
+          }
+        },
+        {
+          "key": "rank",
+          "type": "number",
+          "label": {
+            "en": "Rank (1 = cheapest)",
+            "fr": "Rang (1 = moins chère)",
+            "de": "Rang (1 = günstigste)",
+            "es": "Rango (1 = más barata)"
+          }
+        },
+        {
+          "key": "start_time",
+          "type": "string",
+          "label": {
+            "en": "Start (HH:MM)",
+            "fr": "Début (HH:MM)",
+            "de": "Beginn (HH:MM)",
+            "es": "Inicio (HH:MM)"
+          }
+        },
+        {
+          "key": "end_time",
+          "type": "string",
+          "label": {
+            "en": "End (HH:MM)",
+            "fr": "Fin (HH:MM)",
+            "de": "Ende (HH:MM)",
+            "es": "Fin (HH:MM)"
+          }
         }
       ]
     }
   ],
   "widgets": [
     {
-      "key": "demo_status",
-      "label": { "en": "Demo status", "fr": "État de la démo" },
-      "description": {
-        "en": "Live temperature and plug power, plug connection and observed location.",
-        "fr": "Température et puissance en direct, connexion de la prise, position observée."
+      "key": "prices",
+      "label": {
+        "en": "Electricity prices",
+        "fr": "Prix de l'électricité",
+        "de": "Strompreise",
+        "es": "Precios de la luz"
       },
-      "icon": "activity",
-      "action_timeout_seconds": 15
+      "description": {
+        "en": "Today's and tomorrow's prices, the current price and the cheapest hours.",
+        "fr": "Prix du jour et du lendemain, prix actuel et heures les moins chères.",
+        "de": "Preise von heute und morgen, aktueller Preis und günstigste Stunden.",
+        "es": "Precios de hoy y de mañana, precio actual y horas más baratas."
+      },
+      "icon": "bar-chart-2"
     }
   ]
 }

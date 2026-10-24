@@ -1,0 +1,490 @@
+{
+  "data": {
+    "marketPrices": {
+      "electricityPrices": [
+        {
+          "from": "2026-10-23T22:00:00.000Z",
+          "till": "2026-10-23T23:00:00.000Z",
+          "marketPrice": 0.02709,
+          "marketPriceTax": 0.00569,
+          "sourcingMarkupPrice": 0.01815,
+          "energyTaxPrice": 0.11085,
+          "perUnit": "KWH",
+          "allInPrice": 0.16178
+        },
+        {
+          "from": "2026-10-23T23:00:00.000Z",
+          "till": "2026-10-24T00:00:00.000Z",
+          "marketPrice": 0.0261,
+          "marketPriceTax": 0.00548,
+          "sourcingMarkupPrice": 0.01815,
+          "energyTaxPrice": 0.11085,
+          "perUnit": "KWH",
+          "allInPrice": 0.16058
+        },
+        {
+          "from": "2026-10-24T00:00:00.000Z",
+          "till": "2026-10-24T01:00:00.000Z",
+          "marketPrice": 0.01875,
+          "marketPriceTax": 0.00394,
+          "sourcingMarkupPrice": 0.01815,
+          "energyTaxPrice": 0.11085,
+          "perUnit": "KWH",
+          "allInPrice": 0.15169
+        },
+        {
+          "from": "2026-10-24T01:00:00.000Z",
+          "till": "2026-10-24T02:00:00.000Z",
+          "marketPrice": 0.01971,
+          "marketPriceTax": 0.00414,
+          "sourcingMarkupPrice": 0.01815,
+          "energyTaxPrice": 0.11085,
+          "perUnit": "KWH",
+          "allInPrice": 0.15285
+        },
+        {
+          "from": "2026-10-24T02:00:00.000Z",
+          "till": "2026-10-24T03:00:00.000Z",
+          "marketPrice": 0.01849,
+          "marketPriceTax": 0.00388,
+          "sourcingMarkupPrice": 0.01815,
+          "energyTaxPrice": 0.11085,
+          "perUnit": "KWH",
+          "allInPrice": 0.15137
+        },
+        {
+          "from": "2026-10-24T03:00:00.000Z",
+          "till": "2026-10-24T04:00:00.000Z",
+          "marketPrice": 0.0197,
+          "marketPriceTax": 0.00414,
+          "sourcingMarkupPrice": 0.01815,
+          "energyTaxPrice": 0.11085,
+          "perUnit": "KWH",
+          "allInPrice": 0.15284
+        },
+        {
+          "from": "2026-10-24T04:00:00.000Z",
+          "till": "2026-10-24T05:00:00.000Z",
+          "marketPrice": 0.01979,
+          "marketPriceTax": 0.00416,
+          "sourcingMarkupPrice": 0.01815,
+          "energyTaxPrice": 0.11085,
+          "perUnit": "KWH",
+          "allInPrice": 0.15294
+        },
+        {
+          "from": "2026-10-24T05:00:00.000Z",
+          "till": "2026-10-24T06:00:00.000Z",
+          "marketPrice": 0.0365,
+          "marketPriceTax": 0.00767,
+          "sourcingMarkupPrice": 0.01815,
+          "energyTaxPrice": 0.11085,
+          "perUnit": "KWH",
+          "allInPrice": 0.17316
+        },
+        {
+          "from": "2026-10-24T06:00:00.000Z",
+          "till": "2026-10-24T07:00:00.000Z",
+          "marketPrice": 0.04942,
+          "marketPriceTax": 0.01038,
+          "sourcingMarkupPrice": 0.01815,
+          "energyTaxPrice": 0.11085,
+          "perUnit": "KWH",
+          "allInPrice": 0.1888
+        },
+        {
+          "from": "2026-10-24T07:00:00.000Z",
+          "till": "2026-10-24T08:00:00.000Z",
+          "marketPrice": 0.05523,
+          "marketPriceTax": 0.0116,
+          "sourcingMarkupPrice": 0.01815,
+          "energyTaxPrice": 0.11085,
+          "perUnit": "KWH",
+          "allInPrice": 0.19583
+        },
+        {
+          "from": "2026-10-24T08:00:00.000Z",
+          "till": "2026-10-24T09:00:00.000Z",
+          "marketPrice": 0.03425,
+          "marketPriceTax": 0.00719,
+          "sourcingMarkupPrice": 0.01815,
+          "energyTaxPrice": 0.11085,
+          "perUnit": "KWH",
+          "allInPrice": 0.17044
+        },
+        {
+          "from": "2026-10-24T09:00:00.000Z",
+          "till": "2026-10-24T10:00:00.000Z",
+          "marketPrice": 0.01545,
+          "marketPriceTax": 0.00324,
+          "sourcingMarkupPrice": 0.01815,
+          "energyTaxPrice": 0.11085,
+          "perUnit": "KWH",
+          "allInPrice": 0.14769
+        },
+        {
+          "from": "2026-10-24T10:00:00.000Z",
+          "till": "2026-10-24T11:00:00.000Z",
+          "marketPrice": 0.00794,
+          "marketPriceTax": 0.00167,
+          "sourcingMarkupPrice": 0.01815,
+          "energyTaxPrice": 0.11085,
+          "perUnit": "KWH",
+          "allInPrice": 0.13861
+        },
+        {
+          "from": "2026-10-24T11:00:00.000Z",
+          "till": "2026-10-24T12:00:00.000Z",
+          "marketPrice": 0.00394,
+          "marketPriceTax": 0.00083,
+          "sourcingMarkupPrice": 0.01815,
+          "energyTaxPrice": 0.11085,
+          "perUnit": "KWH",
+          "allInPrice": 0.13377
+        },
+        {
+          "from": "2026-10-24T12:00:00.000Z",
+          "till": "2026-10-24T13:00:00.000Z",
+          "marketPrice": 0.00398,
+          "marketPriceTax": 0.00084,
+          "sourcingMarkupPrice": 0.01815,
+          "energyTaxPrice": 0.11085,
+          "perUnit": "KWH",
+          "allInPrice": 0.13381
+        },
+        {
+          "from": "2026-10-24T13:00:00.000Z",
+          "till": "2026-10-24T14:00:00.000Z",
+          "marketPrice": 0.00751,
+          "marketPriceTax": 0.00158,
+          "sourcingMarkupPrice": 0.01815,
+          "energyTaxPrice": 0.11085,
+          "perUnit": "KWH",
+          "allInPrice": 0.13809
+        },
+        {
+          "from": "2026-10-24T14:00:00.000Z",
+          "till": "2026-10-24T15:00:00.000Z",
+          "marketPrice": 0.02255,
+          "marketPriceTax": 0.00474,
+          "sourcingMarkupPrice": 0.01815,
+          "energyTaxPrice": 0.11085,
+          "perUnit": "KWH",
+          "allInPrice": 0.15628
+        },
+        {
+          "from": "2026-10-24T15:00:00.000Z",
+          "till": "2026-10-24T16:00:00.000Z",
+          "marketPrice": 0.05526,
+          "marketPriceTax": 0.0116,
+          "sourcingMarkupPrice": 0.01815,
+          "energyTaxPrice": 0.11085,
+          "perUnit": "KWH",
+          "allInPrice": 0.19586
+        },
+        {
+          "from": "2026-10-24T16:00:00.000Z",
+          "till": "2026-10-24T17:00:00.000Z",
+          "marketPrice": 0.10034,
+          "marketPriceTax": 0.02107,
+          "sourcingMarkupPrice": 0.01815,
+          "energyTaxPrice": 0.11085,
+          "perUnit": "KWH",
+          "allInPrice": 0.25041
+        },
+        {
+          "from": "2026-10-24T17:00:00.000Z",
+          "till": "2026-10-24T18:00:00.000Z",
+          "marketPrice": 0.10323,
+          "marketPriceTax": 0.02168,
+          "sourcingMarkupPrice": 0.01815,
+          "energyTaxPrice": 0.11085,
+          "perUnit": "KWH",
+          "allInPrice": 0.25391
+        },
+        {
+          "from": "2026-10-24T18:00:00.000Z",
+          "till": "2026-10-24T19:00:00.000Z",
+          "marketPrice": 0.08268,
+          "marketPriceTax": 0.01736,
+          "sourcingMarkupPrice": 0.01815,
+          "energyTaxPrice": 0.11085,
+          "perUnit": "KWH",
+          "allInPrice": 0.22904
+        },
+        {
+          "from": "2026-10-24T19:00:00.000Z",
+          "till": "2026-10-24T20:00:00.000Z",
+          "marketPrice": 0.03787,
+          "marketPriceTax": 0.00795,
+          "sourcingMarkupPrice": 0.01815,
+          "energyTaxPrice": 0.11085,
+          "perUnit": "KWH",
+          "allInPrice": 0.17482
+        },
+        {
+          "from": "2026-10-24T20:00:00.000Z",
+          "till": "2026-10-24T21:00:00.000Z",
+          "marketPrice": 0.028,
+          "marketPriceTax": 0.00588,
+          "sourcingMarkupPrice": 0.01815,
+          "energyTaxPrice": 0.11085,
+          "perUnit": "KWH",
+          "allInPrice": 0.16288
+        },
+        {
+          "from": "2026-10-24T21:00:00.000Z",
+          "till": "2026-10-24T22:00:00.000Z",
+          "marketPrice": 0.01309,
+          "marketPriceTax": 0.00275,
+          "sourcingMarkupPrice": 0.01815,
+          "energyTaxPrice": 0.11085,
+          "perUnit": "KWH",
+          "allInPrice": 0.14484
+        }
+      ],
+      "gasPrices": [
+        {
+          "from": "2026-10-23T22:00:00.000Z",
+          "till": "2026-10-23T23:00:00.000Z",
+          "marketPrice": 0.88301,
+          "marketPriceTax": 0.18543,
+          "sourcingMarkupPrice": 0.07986,
+          "energyTaxPrice": 0.7268,
+          "perUnit": "M3",
+          "allInPrice": 1.8751
+        },
+        {
+          "from": "2026-10-23T23:00:00.000Z",
+          "till": "2026-10-24T00:00:00.000Z",
+          "marketPrice": 0.88301,
+          "marketPriceTax": 0.18543,
+          "sourcingMarkupPrice": 0.07986,
+          "energyTaxPrice": 0.7268,
+          "perUnit": "M3",
+          "allInPrice": 1.8751
+        },
+        {
+          "from": "2026-10-24T00:00:00.000Z",
+          "till": "2026-10-24T01:00:00.000Z",
+          "marketPrice": 0.88301,
+          "marketPriceTax": 0.18543,
+          "sourcingMarkupPrice": 0.07986,
+          "energyTaxPrice": 0.7268,
+          "perUnit": "M3",
+          "allInPrice": 1.8751
+        },
+        {
+          "from": "2026-10-24T01:00:00.000Z",
+          "till": "2026-10-24T02:00:00.000Z",
+          "marketPrice": 0.88301,
+          "marketPriceTax": 0.18543,
+          "sourcingMarkupPrice": 0.07986,
+          "energyTaxPrice": 0.7268,
+          "perUnit": "M3",
+          "allInPrice": 1.8751
+        },
+        {
+          "from": "2026-10-24T02:00:00.000Z",
+          "till": "2026-10-24T03:00:00.000Z",
+          "marketPrice": 0.88301,
+          "marketPriceTax": 0.18543,
+          "sourcingMarkupPrice": 0.07986,
+          "energyTaxPrice": 0.7268,
+          "perUnit": "M3",
+          "allInPrice": 1.8751
+        },
+        {
+          "from": "2026-10-24T03:00:00.000Z",
+          "till": "2026-10-24T04:00:00.000Z",
+          "marketPrice": 0.88301,
+          "marketPriceTax": 0.18543,
+          "sourcingMarkupPrice": 0.07986,
+          "energyTaxPrice": 0.7268,
+          "perUnit": "M3",
+          "allInPrice": 1.8751
+        },
+        {
+          "from": "2026-10-24T04:00:00.000Z",
+          "till": "2026-10-24T05:00:00.000Z",
+          "marketPrice": 0.90778,
+          "marketPriceTax": 0.19063,
+          "sourcingMarkupPrice": 0.07986,
+          "energyTaxPrice": 0.7268,
+          "perUnit": "M3",
+          "allInPrice": 1.90508
+        },
+        {
+          "from": "2026-10-24T05:00:00.000Z",
+          "till": "2026-10-24T06:00:00.000Z",
+          "marketPrice": 0.90778,
+          "marketPriceTax": 0.19063,
+          "sourcingMarkupPrice": 0.07986,
+          "energyTaxPrice": 0.7268,
+          "perUnit": "M3",
+          "allInPrice": 1.90508
+        },
+        {
+          "from": "2026-10-24T06:00:00.000Z",
+          "till": "2026-10-24T07:00:00.000Z",
+          "marketPrice": 0.90778,
+          "marketPriceTax": 0.19063,
+          "sourcingMarkupPrice": 0.07986,
+          "energyTaxPrice": 0.7268,
+          "perUnit": "M3",
+          "allInPrice": 1.90508
+        },
+        {
+          "from": "2026-10-24T07:00:00.000Z",
+          "till": "2026-10-24T08:00:00.000Z",
+          "marketPrice": 0.90778,
+          "marketPriceTax": 0.19063,
+          "sourcingMarkupPrice": 0.07986,
+          "energyTaxPrice": 0.7268,
+          "perUnit": "M3",
+          "allInPrice": 1.90508
+        },
+        {
+          "from": "2026-10-24T08:00:00.000Z",
+          "till": "2026-10-24T09:00:00.000Z",
+          "marketPrice": 0.90778,
+          "marketPriceTax": 0.19063,
+          "sourcingMarkupPrice": 0.07986,
+          "energyTaxPrice": 0.7268,
+          "perUnit": "M3",
+          "allInPrice": 1.90508
+        },
+        {
+          "from": "2026-10-24T09:00:00.000Z",
+          "till": "2026-10-24T10:00:00.000Z",
+          "marketPrice": 0.90778,
+          "marketPriceTax": 0.19063,
+          "sourcingMarkupPrice": 0.07986,
+          "energyTaxPrice": 0.7268,
+          "perUnit": "M3",
+          "allInPrice": 1.90508
+        },
+        {
+          "from": "2026-10-24T10:00:00.000Z",
+          "till": "2026-10-24T11:00:00.000Z",
+          "marketPrice": 0.90778,
+          "marketPriceTax": 0.19063,
+          "sourcingMarkupPrice": 0.07986,
+          "energyTaxPrice": 0.7268,
+          "perUnit": "M3",
+          "allInPrice": 1.90508
+        },
+        {
+          "from": "2026-10-24T11:00:00.000Z",
+          "till": "2026-10-24T12:00:00.000Z",
+          "marketPrice": 0.90778,
+          "marketPriceTax": 0.19063,
+          "sourcingMarkupPrice": 0.07986,
+          "energyTaxPrice": 0.7268,
+          "perUnit": "M3",
+          "allInPrice": 1.90508
+        },
+        {
+          "from": "2026-10-24T12:00:00.000Z",
+          "till": "2026-10-24T13:00:00.000Z",
+          "marketPrice": 0.90778,
+          "marketPriceTax": 0.19063,
+          "sourcingMarkupPrice": 0.07986,
+          "energyTaxPrice": 0.7268,
+          "perUnit": "M3",
+          "allInPrice": 1.90508
+        },
+        {
+          "from": "2026-10-24T13:00:00.000Z",
+          "till": "2026-10-24T14:00:00.000Z",
+          "marketPrice": 0.90778,
+          "marketPriceTax": 0.19063,
+          "sourcingMarkupPrice": 0.07986,
+          "energyTaxPrice": 0.7268,
+          "perUnit": "M3",
+          "allInPrice": 1.90508
+        },
+        {
+          "from": "2026-10-24T14:00:00.000Z",
+          "till": "2026-10-24T15:00:00.000Z",
+          "marketPrice": 0.90778,
+          "marketPriceTax": 0.19063,
+          "sourcingMarkupPrice": 0.07986,
+          "energyTaxPrice": 0.7268,
+          "perUnit": "M3",
+          "allInPrice": 1.90508
+        },
+        {
+          "from": "2026-10-24T15:00:00.000Z",
+          "till": "2026-10-24T16:00:00.000Z",
+          "marketPrice": 0.90778,
+          "marketPriceTax": 0.19063,
+          "sourcingMarkupPrice": 0.07986,
+          "energyTaxPrice": 0.7268,
+          "perUnit": "M3",
+          "allInPrice": 1.90508
+        },
+        {
+          "from": "2026-10-24T16:00:00.000Z",
+          "till": "2026-10-24T17:00:00.000Z",
+          "marketPrice": 0.90778,
+          "marketPriceTax": 0.19063,
+          "sourcingMarkupPrice": 0.07986,
+          "energyTaxPrice": 0.7268,
+          "perUnit": "M3",
+          "allInPrice": 1.90508
+        },
+        {
+          "from": "2026-10-24T17:00:00.000Z",
+          "till": "2026-10-24T18:00:00.000Z",
+          "marketPrice": 0.90778,
+          "marketPriceTax": 0.19063,
+          "sourcingMarkupPrice": 0.07986,
+          "energyTaxPrice": 0.7268,
+          "perUnit": "M3",
+          "allInPrice": 1.90508
+        },
+        {
+          "from": "2026-10-24T18:00:00.000Z",
+          "till": "2026-10-24T19:00:00.000Z",
+          "marketPrice": 0.90778,
+          "marketPriceTax": 0.19063,
+          "sourcingMarkupPrice": 0.07986,
+          "energyTaxPrice": 0.7268,
+          "perUnit": "M3",
+          "allInPrice": 1.90508
+        },
+        {
+          "from": "2026-10-24T19:00:00.000Z",
+          "till": "2026-10-24T20:00:00.000Z",
+          "marketPrice": 0.90778,
+          "marketPriceTax": 0.19063,
+          "sourcingMarkupPrice": 0.07986,
+          "energyTaxPrice": 0.7268,
+          "perUnit": "M3",
+          "allInPrice": 1.90508
+        },
+        {
+          "from": "2026-10-24T20:00:00.000Z",
+          "till": "2026-10-24T21:00:00.000Z",
+          "marketPrice": 0.90778,
+          "marketPriceTax": 0.19063,
+          "sourcingMarkupPrice": 0.07986,
+          "energyTaxPrice": 0.7268,
+          "perUnit": "M3",
+          "allInPrice": 1.90508
+        },
+        {
+          "from": "2026-10-24T21:00:00.000Z",
+          "till": "2026-10-24T22:00:00.000Z",
+          "marketPrice": 0.90778,
+          "marketPriceTax": 0.19063,
+          "sourcingMarkupPrice": 0.07986,
+          "energyTaxPrice": 0.7268,
+          "perUnit": "M3",
+          "allInPrice": 1.90508
+        }
+      ]
+    }
+  }
+}

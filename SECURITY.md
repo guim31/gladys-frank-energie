@@ -30,6 +30,18 @@ Gladys before reporting a problem.
 
 In scope: the code of this repository and the Docker image it publishes.
 
+What the integration handles:
+
+- **No secret.** The Frank Energie price API is public: no account, no key, no
+  password in the configuration (the customer login of Frank Energie is not
+  used). The only credential in the container is the integration token Gladys
+  gives it, never logged.
+- **`/data`** holds one file, `scene-events.json`: the start of the last hour
+  whose scene events were sent. Nothing personal.
+- **Network**: outbound HTTPS to `graphql.frankenergie.nl` only, about two
+  requests an hour. Nothing listens on the network; the container talks to
+  Gladys through the SDK.
+
 Out of scope: Gladys Assistant itself (see its
 [security policy](https://github.com/GladysAssistant/Gladys/security/policy)),
-and the third-party services and devices the integration talks to.
+and the Frank Energie service.

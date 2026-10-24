@@ -1,0 +1,15 @@
+{
+  "data": null,
+  "errors": [
+    {
+      "message": "bad is not a valid date",
+      "locations": [
+        {
+          "line": 2,
+          "column": 3
+        }
+      ],
+      "path": ["marketPrices"]
+    }
+  ]
+}

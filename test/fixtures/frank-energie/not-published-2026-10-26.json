@@ -1,0 +1,15 @@
+{
+  "data": null,
+  "errors": [
+    {
+      "message": "No marketprices found for segment ELECTRICITY for 2026-10-26",
+      "locations": [
+        {
+          "line": 2,
+          "column": 3
+        }
+      ],
+      "path": ["marketPrices"]
+    }
+  ]
+}
