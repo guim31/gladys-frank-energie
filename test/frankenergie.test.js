@@ -134,9 +134,15 @@ test('network, HTTP and format failures are told apart', async () => {
     fetchMarketPrices({ day: TODAY, fetch: garbage }),
     (err) => err.kind === 'format',
   );
+  // A server that never answers. The AbortSignal.timeout timer does not keep
+  // the event loop alive on Node 22: a long timer of its own does.
   const slow = async (url, init) =>
     new Promise((resolve, reject) => {
-      init.signal.addEventListener('abort', () => reject(init.signal.reason));
+      const pending = setTimeout(resolve, 60000);
+      init.signal.addEventListener('abort', () => {
+        clearTimeout(pending);
+        reject(init.signal.reason);
+      });
     });
   await assert.rejects(
     fetchMarketPrices({ day: TODAY, fetch: slow, timeoutMs: 10 }),
