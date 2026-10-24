@@ -10,6 +10,8 @@ the notes of the version's GitHub Release.
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-10-24
+
 ### Added
 
 - The Frank Energie device: current and next hour electricity price, average,
@@ -24,3 +26,6 @@ the notes of the version's GitHub Release.
   hours begins".
 - "Refresh the prices now" button in the configuration.
 - English, French, German and Spanish texts and documentation.
+
+[Unreleased]: https://github.com/guim31/gladys-frank-energie/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/guim31/gladys-frank-energie/releases/tag/v1.0.0
