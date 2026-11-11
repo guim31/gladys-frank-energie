@@ -30,7 +30,7 @@ It mirrors the [EnergyZero integration](https://github.com/guim31/gladys-energyz
 
 ## Requirements
 
-- Gladys Assistant **5.1.0** or later.
+- Gladys Assistant **5.3.0** or later.
 - Internet access from Gladys to `graphql.frankenergie.nl`.
 
 ## Installation
