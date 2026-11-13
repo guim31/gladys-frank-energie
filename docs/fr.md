@@ -31,7 +31,7 @@ minuit à Amsterdam, quel que soit le fuseau de votre Gladys.
 
 ## Prérequis
 
-- Gladys Assistant 5.1.0 ou plus récent.
+- Gladys Assistant 5.3.0 ou plus récent.
 - Un accès internet depuis Gladys vers `graphql.frankenergie.nl`.
 - Rien d'autre : ni compte, ni clé d'API, ni matériel.
 

@@ -30,7 +30,7 @@ bis Mitternacht, egal in welcher Zeitzone dein Gladys läuft.
 
 ## Voraussetzungen
 
-- Gladys Assistant 5.1.0 oder neuer.
+- Gladys Assistant 5.3.0 oder neuer.
 - Internetzugang von Gladys zu `graphql.frankenergie.nl`.
 - Sonst nichts: kein Konto, kein API-Schlüssel, keine Hardware.
 
