@@ -8,8 +8,8 @@
     "de": "Dynamische Strom- und Gaspreise von Frank Energie (Niederlande), für heute und morgen.",
     "es": "Precios dinámicos de electricidad y gas de Frank Energie (Países Bajos), hoy y mañana."
   },
-  "version": "1.0.0",
-  "docker_image": "ghcr.io/guim31/gladys-frank-energie:1.0.0",
+  "version": "1.0.1",
+  "docker_image": "ghcr.io/guim31/gladys-frank-energie:1.0.1",
   "gladys_version": ">=5.3.0",
   "cover_image": "https://raw.githubusercontent.com/guim31/gladys-frank-energie/main/cover.png",
   "categories": ["energy"],

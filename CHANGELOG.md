@@ -10,6 +10,8 @@ the notes of the version's GitHub Release.
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-11-13
+
 ### Changed
 
 - Declared for the Netherlands only (`countries: ["NL"]`): the Gladys catalog of an
@@ -33,5 +35,6 @@ the notes of the version's GitHub Release.
 - "Refresh the prices now" button in the configuration.
 - English, French, German and Spanish texts and documentation.
 
-[Unreleased]: https://github.com/guim31/gladys-frank-energie/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/guim31/gladys-frank-energie/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/guim31/gladys-frank-energie/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/guim31/gladys-frank-energie/releases/tag/v1.0.0
