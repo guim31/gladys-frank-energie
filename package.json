@@ -1,6 +1,6 @@
 {
   "name": "gladys-frank-energie",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "description": "Gladys Assistant integration: dynamic electricity and gas prices of Frank Energie (Netherlands).",
   "type": "module",
